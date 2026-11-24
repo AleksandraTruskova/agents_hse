@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мини-трекер учебных задач</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Мини-трекер учебных задач</h1>
+
+    <section class="stats" aria-label="Итоги недели">
+      <p class="stats-line">
+        Всего: <strong id="total-hours">0</strong> ч ·
+        Выполнено: <strong id="done-hours">0</strong> ч ·
+        Прогресс: <strong id="progress-value">0</strong>%
+      </p>
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Прогресс по часам"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progress-bar"
+      >
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </section>
+
+    <form id="task-form" novalidate>
+      <div class="field">
+        <label for="task-title">Название задачи</label>
+        <input type="text" id="task-title" name="title" autocomplete="off">
+        <p class="error" id="error-title" role="alert" hidden></p>
+      </div>
+      <div class="field">
+        <label for="task-hours">Часы (0,5–24, шаг 0,5)</label>
+        <input type="text" id="task-hours" name="hours" inputmode="decimal" autocomplete="off">
+        <p class="error" id="error-hours" role="alert" hidden></p>
+      </div>
+      <button type="submit" class="btn-primary">Добавить задачу</button>
+    </form>
+
+    <div class="filters" role="group" aria-label="Фильтр списка">
+      <button type="button" class="filter-btn" data-filter="all">Все</button>
+      <button type="button" class="filter-btn" data-filter="active">Активные</button>
+      <button type="button" class="filter-btn" data-filter="done">Готовые</button>
+    </div>
+
+    <p class="notice" id="storage-notice" role="status" hidden></p>
+
+    <ul id="task-list" class="task-list"></ul>
+    <p class="empty-state" id="empty-state" hidden>Список пуст. Добавьте задачу или измените фильтр.</p>
+  </main>
+
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

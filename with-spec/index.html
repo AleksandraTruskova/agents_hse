@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мини-трекер учебных задач</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <h1>Учебные задачи на неделю</h1>
+
+      <p id="storage-warning" class="storage-warning" hidden>
+        Сохранение недоступно: задачи будут жить только до закрытия вкладки.
+      </p>
+
+      <form id="task-form" novalidate>
+        <div class="field">
+          <label for="task-title">Название задачи</label>
+          <input id="task-title" name="title" type="text" autocomplete="off">
+          <span id="title-error" class="error" role="alert"></span>
+        </div>
+        <div class="field">
+          <label for="task-hours">Часы (от 0,5 до 24, шаг 0,5)</label>
+          <input id="task-hours" name="hours" type="text" inputmode="decimal" autocomplete="off">
+          <span id="hours-error" class="error" role="alert"></span>
+        </div>
+        <button type="submit">Добавить задачу</button>
+      </form>
+
+      <div class="toolbar">
+        <label for="filter">Показывать</label>
+        <select id="filter">
+          <option value="all">Все</option>
+          <option value="active">Активные</option>
+        </select>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+
+      <p id="totals" class="totals" aria-live="polite"></p>
+    </main>
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>
